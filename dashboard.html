@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>acmeINMOBILIARIA</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!-- Cargamos los web components -->
+    <script src="components.js"></script>
+
+    <!-- HEADER -->
+    <!-- Unicamente Visual -->
+    <div class="header">
+    <div class="header-logo">acme<span>INMOBILIARIA</span></div>
+    <div class="header-title">GESTIÓN DE INMUEBLES</div>
+    <div class="header-user">
+        Daniel Borja
+        <a href="#">Cerrar Sesión</a>
+    </div>
+    </div>
+
+    <!-- NAV -->
+    <!-- Unicamente Visual -->
+    <div class="nav">
+    <a href="dashboard.html" class="active">Inmuebles</a>
+    <a href="dashboard.html">Usuarios</a>
+    </div>
+
+    <!-- CONTENIDO MAIN -->
+    <div class="content">
+        <!-- SEARCH BAR VISUAL -->
+        <div class="list-top">
+            <div class="search-wrap">
+            <input type="text" id="search-input" placeholder="Casas, Apto, Terreno...">
+            <button id="btn-search">Buscar</button>
+            </div>
+            <button class="btn-nuevo" onclick="window.location.href='form.html'">Nuevo</button>
+        </div>
+        <div id="rows"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <!-- MODAL ELIMINAR -->
+    <div class="modal-overlay" id="modal">
+    <div class="modal-box">
+        <p>¿Desea eliminar este inmueble?</p>
+        <div class="modal-btns">
+        <button onclick="cerrarModal()">Cancelar</button>
+        <button class="btn-confirm" onclick="ejecutarEliminar()">Eliminar</button>
+        </div>
+    </div>
+    </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
