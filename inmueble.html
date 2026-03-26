@@ -1,11 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>acmeINMOBILIARIA</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+
+    <!-- HEADER -->
+    <!-- Unicamente Visual -->
+    <div class="header">
+    <div class="header-logo">acme<span>INMOBILIARIA</span></div>
+    <div class="header-title">GESTIÓN DE INMUEBLES</div>
+    <div class="header-user">
+        Daniel Borja
+        <a href="#">Cerrar Sesión</a>
+    </div>
+    </div>
+
+    <!-- NAV -->
+    <!-- Unicamente Visual -->
+    <div class="nav">
+    <a href="dashboard.html" class="active">Inmuebles</a>
+    <a href="dashboard.html">Usuarios</a>
+    </div>
+
+    <!-- CONTENIDO MAIN -->
+    <div class="content">
+        <div class="form-card">
+
+            <button class="btn-close" onclick="window.location.href='dashboard.html'">x</button>
+            <h2>Ver Inmueble</h2>
+            <div class="form-layout">
+                <div class="form-img" id="detail-img"></div>
+                <div class="form-fields" id="detail-fields">
+                    <!-- Se llena con JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Se llena con JS -->
+    <script>
+        function getById(id) {
+            try {
+            const list = JSON.parse(localStorage.getItem('acme_inmuebles')) || [];
+            return list.find(i => i.id === Number(id));
+            } catch { return null; }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const id = new URLSearchParams(window.location.search).get('id');
+            const d  = getById(id);
+            if (!d) { document.getElementById('detail-fields').innerHTML = '<p>No encontrado.</p>'; return; }
+
+            // Imagen
+            const imgEl = document.getElementById('detail-img');
+            if (d.img) imgEl.innerHTML = `<img src="${d.img}" alt="">`;
+
+            // Campos
+            const campos = [
+            ['Dirección',                d.direccion],
+            ['Tipo',                     d.tipo],
+            ['Ciudad',                   d.ciudad],
+            ['Departamento',             d.departamento],
+            ['Matrícula Inmobiliaria',   d.matricula],
+            ['Área (m2)',                d.area],
+            ['Propietario',              d.propietario],
+            ['Identificación propietario', d.identificacion],
+            ['Valor del inmueble',       d.valor],
+            ];
+
+            document.getElementById('detail-fields').innerHTML = campos.map(([label, val]) => `
+            <div class="field-group">
+                <label>${label}</label>
+                <input type="text" value="${val || ''}" readonly>
+            </div>
+            `).join('') + `
+            <div class="field-group" style="justify-content:flex-end;">
+                <label>&nbsp;</label>
+                <label class="field-check">
+                <input type="checkbox" ${d.uso_comercial ? 'checked' : ''} disabled> Uso comercial
+                </label>
+            </div>
+            `;
+        });
+    </script>
+
 </body>
 </html>
