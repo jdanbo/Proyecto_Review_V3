@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>acmeINMOBILIARIA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <!-- Unicamente Visual -->
+    <div class="header">
+    <div class="header-logo">acme<span>INMOBILIARIA</span></div>
+    <div class="header-title">GESTIÓN DE INMUEBLES</div>
+        <div class="header-user">
+            Daniel Borja
+            <a href="#">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <!-- Unicamente Visual -->    
+     <div class="nav">
+    <a href="dashboard.html" class="active">Inmuebles</a>
+    <a href="#">Usuarios</a>
+    </div>
+
+    <!-- CONTENIDO DEL FORM -->
+    <div class="content">
+    <div class="form-card">
+
+        <button class="btn-close" onclick="window.location.href='dashboard.html'">x</button>
+        <h2 id="form-title">Edición de Inmueble</h2>
+
+        <!-- FORMULARIO DE DATOS -->
+        <form id="form-inmueble">
+            <div class="form-layout">
+
+                <!-- Imagen izquierda -->
+                <div class="form-img" id="form-img-preview"></div>
+
+                <!-- Campos derecha -->
+                <div class="form-fields">
+                    <div class="field-group">
+                        <label>Dirección</label>
+                        <input type="text" id="f-direccion" placeholder="Dirección">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Tipo</label>
+                        <select id="f-tipo">
+                        <option value="Casa">Casa</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Local">Local</option>
+                        <option value="Oficina">Oficina</option>
+                        <option value="Terreno">Terreno</option>
+                        <option value="Bodega">Bodega</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <label>Ciudad</label>
+                        <input type="text" id="f-ciudad" placeholder="Ciudad">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Departamento</label>
+                        <input type="text" id="f-departamento" placeholder="Departamento">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Matrícula Inmobiliaria</label>
+                        <input type="text" id="f-matricula" placeholder="000-000">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Área (m2)</label>
+                        <input type="text" id="f-area" placeholder="00">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Propietario</label>
+                        <input type="text" id="f-propietario" placeholder="Propietario">
+                    </div>
+
+                    <div class="field-group">
+                        <label>Identificación propietario</label>
+                        <input type="text" id="f-identificacion" placeholder="000-000">
+                    </div>
+
+                    <!-- Valor + Uso comercial en la misma fila -->
+                    <div class="field-group">
+                        <label>Valor del inmueble</label>
+                        <input type="number" id="f-valor" placeholder="000,000">
+                    </div>
+
+                    <div class="field-group" style="justify-content:flex-end;">
+                        <label>&nbsp;</label>
+                        <label class="field-check">
+                        <input type="checkbox" id="f-uso"> Uso comercial
+                        </label>
+                    </div>
+
+                    <!-- URL imagen -->
+                    <div class="field-group" style="grid-column: span 2;">
+                        <label>URL de imagen</label>
+                        <input type="text" id="f-img" placeholder="https://...">
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-guardar">Guardar</button>
+            </div>
+        </form>
+
+    </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
